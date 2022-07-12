@@ -1,21 +1,19 @@
+global using ILogger = NLog.ILogger;
 using NLog;
 using NLog.Web;
+using ToDoList.Configuration;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-logger.Debug("init main");
+logger.Debug("Application start");
 
 try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    // Add services to the container.
-    builder.Services.AddControllersWithViews();
-
-    // NLog: Setup NLog for Dependency injection
-    builder.Logging.ClearProviders();
-    builder.Host.UseNLog();
-
     var app = builder.Build();
+
+    //installing all config
+    ServicesInstaller.InstallServicesInAsseembly(builder);
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
