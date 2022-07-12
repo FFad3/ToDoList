@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿using Infrastrucutre;
+using NLog;
 
 namespace ToDoList.Configuration
 {
@@ -11,6 +12,9 @@ namespace ToDoList.Configuration
             // Add services to the container.
             _logger.Debug("Add controller with views");
             builder.Services.AddControllersWithViews();
+            // Add infrastrucutre
+            InfrastructureInstaller.Install(builder.Services);
+            // Add application
         }
     }
 }
