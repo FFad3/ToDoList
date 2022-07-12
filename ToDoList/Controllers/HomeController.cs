@@ -1,21 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infrastrucutre.Repositories.IRepositories;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ToDoList.Models;
-using Utils.Attribiutes;
 
 namespace ToDoList.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IPriorityRepository _repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPriorityRepository repo)
         {
             _logger = logger;
+            _repo = repo;
         }
 
         public IActionResult Index()
         {
+            var x = _repo.GetAll();
+            var z = _repo.GetById(1);
             return View();
         }
 
