@@ -10,10 +10,10 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    var app = builder.Build();
-
     //installing all config
     ServicesInstaller.InstallServicesInAsseembly(builder);
+
+    var app = builder.Build();
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
