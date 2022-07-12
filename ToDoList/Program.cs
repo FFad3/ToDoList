@@ -1,4 +1,6 @@
 global using ILogger = NLog.ILogger;
+using Infrastrucutre;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
 using ToDoList.Configuration;
@@ -10,6 +12,12 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    //dbcontext
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    {
+        var conn = builder.Configuration.GetConnectionString("DefaultConnectionString");
+        options.UseSqlServer(conn);
+    });
     //installing all config
     ServicesInstaller.InstallServicesInAsseembly(builder);
 
