@@ -1,5 +1,8 @@
 ﻿using Application.Services.PriorityServ;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Utils.Attribiutes;
 
 namespace ToDoList.Controllers
@@ -16,12 +19,21 @@ namespace ToDoList.Controllers
         }
 
         [LogAtr("Przeglądanie listy priorytetów")]
+        [HttpGet]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [LogAtr("Pobieranie listy piorytetów")]
+        [HttpGet]
+        public JsonResult GetPriorities()
         {
             try
             {
                 var priorities = _service.GetAll();
-                return View(priorities);
+                var values = new JsonResult(Ok(priorities));
+                return values;
             }
             catch (Exception ex)
             {
