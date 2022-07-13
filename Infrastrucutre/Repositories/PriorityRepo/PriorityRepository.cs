@@ -1,8 +1,7 @@
 ﻿using Core.Enttities;
-using Infrastrucutre.Repositories.IRepositories;
 using Utils.Attribiutes;
 
-namespace Infrastrucutre.Repositories
+namespace Infrastrucutre.Repositories.PriorityRepo
 {
     [Injectable(typeof(IPriorityRepository), DependencyInjectionScope.Scoped)]
     public class PriorityRepository : IPriorityRepository

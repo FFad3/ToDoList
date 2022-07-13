@@ -1,6 +1,6 @@
 ﻿using Core.Enttities;
 
-namespace Infrastrucutre.Repositories.IRepositories
+namespace Infrastrucutre.Repositories.PriorityRepo
 {
     public interface IPriorityRepository
     {
