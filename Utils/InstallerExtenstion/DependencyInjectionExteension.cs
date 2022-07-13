@@ -21,7 +21,7 @@ namespace Utils.InstallerExtenstion
 
             if (types.Count <= 0) return;
 
-            _Logger.Debug($"Dodawanie {types.Count} Serwisów");
+            _Logger.Debug($"Dodawanie {types.Count} typów");
 
             foreach (var type in types)
             {
@@ -31,7 +31,7 @@ namespace Utils.InstallerExtenstion
 
                 var implementedInterface = attribute.ImplementedInterface;
 
-                _Logger.Debug($"Dodawanie serwisu: {type.Name}:{implementedInterface.Name} --> {attribute.Scope}");
+                _Logger.Debug($"Dodawanie typu: {type.Name}:{implementedInterface.Name} --> {attribute.Scope}");
                 switch (attribute.Scope)
                 {
                     case DependencyInjectionScope.Scoped:
