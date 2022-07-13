@@ -13,12 +13,20 @@ namespace Infrastrucutre.Repositories.PriorityRepo
             _context = context;
         }
 
-        public void Add(Priority newPriority) => _context.Priorities.Add(newPriority);
+        public void Add(Priority newPriority)
+        {
+            _context.Priorities.Add(newPriority);
+            _context.SaveChanges();
+        }
 
         public IEnumerable<Priority> GetAll() => _context.Priorities.ToList();
 
         public Priority GetById(int id) => _context.Priorities.FirstOrDefault(x => x.Id == id);
 
-        public void Remove(Priority existingPriority) => _context.Priorities.Remove(existingPriority);
+        public void Remove(Priority existingPriority)
+        {
+            _context.Priorities.Remove(existingPriority);
+            _context.SaveChanges();
+        }
     }
 }
