@@ -1,4 +1,5 @@
-﻿using Infrastrucutre;
+﻿using Application;
+using Infrastrucutre;
 using NLog;
 
 namespace ToDoList.Configuration
@@ -15,6 +16,7 @@ namespace ToDoList.Configuration
             // Add infrastrucutre
             InfrastructureInstaller.Install(builder.Services);
             // Add application
+            ApplicationInstaller.Install(builder.Services);
         }
     }
 }
